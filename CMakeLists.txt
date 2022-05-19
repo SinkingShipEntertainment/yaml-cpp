@@ -15,6 +15,12 @@ include(CheckCXXCompilerFlag)
 include(GNUInstallDirs)
 include(CTest)
 
+# We need to compile with -fPIC (Position Independent Code) so that
+# other applications that will link against this one can load this one
+# into their .so
+# Only libraries that are compiled iwth fPIC can be included into other .so libraries.
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 find_program(YAML_CPP_CLANG_FORMAT_EXE NAMES clang-format)
 
 option(YAML_CPP_BUILD_CONTRIB "Enable yaml-cpp contrib in library" ON)
